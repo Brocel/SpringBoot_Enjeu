@@ -1,12 +1,15 @@
 package com.brocels.springboot.enjeu.repository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.brocels.springboot.enjeu.domain.Player;
 
 public class PlayerRepository {
 
+	private List<Player> players = new ArrayList<Player>();
 	private static int maximumPlayers = 10;
+	private static int index = 1; 
 	
 	
 	public static int getMaximumPlayers() {
@@ -14,23 +17,33 @@ public class PlayerRepository {
 	}
 
 	public List<Player> getList() {
-		// TODO Auto-generated method stub
-		return null;
+		return players;
 	}
 
 	public Player findById(Integer id) {
-		// TODO Auto-generated method stub
+		
+		for (Player player : players) {
+			if (player.getId().equals(id)) {
+				return player;
+			}
+		}
 		return null;
 	}
 
-	public Object findByName(String name) {
-		// TODO Auto-generated method stub
+	public Player findByName(String name) {
+		
+		for (Player player : players) {
+			if (player.getName().equals(name)) {
+				return player;
+			}
+		}
 		return null;
 	}
 
 	public void addPlayer(Player player) {
-		// TODO Auto-generated method stub
 		
+		player.setId(index++);
+		players.add(player);
 	}
 
 }

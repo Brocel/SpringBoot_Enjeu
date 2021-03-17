@@ -13,6 +13,8 @@ public class Player {
 	private String city;
 	private String country;
 	private String avatarUrl;
+	
+	@NotBlank(message = "Please enter an email")
 	private String eMail;
 	
 	public Player() {
