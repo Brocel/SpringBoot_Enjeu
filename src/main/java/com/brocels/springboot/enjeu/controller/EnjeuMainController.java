@@ -19,19 +19,19 @@ import org.springframework.web.servlet.view.RedirectView;
 import com.brocels.springboot.enjeu.domain.Player;
 import com.brocels.springboot.enjeu.exception.DuplicateNameException;
 import com.brocels.springboot.enjeu.exception.PlayerlistFullException;
-import com.brocels.springboot.enjeu.service.EnjeuMainService;
+import com.brocels.springboot.enjeu.service.PlayerService;
 
 @Controller
 public class EnjeuMainController {
 
-	private EnjeuMainService enjeuMainService;
+	private PlayerService playerService;
 	
 	private final Logger logger = LoggerFactory.getLogger(EnjeuMainController.class);
 
 	@Autowired
-	public EnjeuMainController(EnjeuMainService enjeuMainService) {
+	public EnjeuMainController(PlayerService enjeuMainService) {
 		super();
-		this.enjeuMainService = enjeuMainService;
+		this.playerService = enjeuMainService;
 	}
 	
 	// Mappings
@@ -44,8 +44,8 @@ public class EnjeuMainController {
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
-		model.put("players", enjeuMainService.getPlayers());
-		model.put("numberOfPlayers", enjeuMainService.getPlayersSize());
+		model.put("players", playerService.getPlayers());
+		model.put("numberOfPlayers", playerService.getPlayersSize());
 		
 		return new ModelAndView(viewName, model);	
 	}
@@ -59,7 +59,7 @@ public class EnjeuMainController {
 		
 		Map<String, Object> model = new HashMap<String, Object>();
 		
-		Player player = enjeuMainService.findPlayerById(id);
+		Player player = playerService.findPlayerById(id);
 		
 		if (player == null) {
 			model.put("player", new Player());
@@ -83,7 +83,7 @@ public class EnjeuMainController {
 		
 		
 		try {
-			enjeuMainService.addOrUpdateWatchlistItem(player);
+			playerService.addOrUpdateWatchlistItem(player);
 		} catch (PlayerlistFullException e) {
 			bindingResult.rejectValue(null, "", e.getMessage());
 			return new ModelAndView("watchlistItemForm");
