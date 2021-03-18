@@ -29,14 +29,14 @@ public class EnjeuMainController {
 	private final Logger logger = LoggerFactory.getLogger(EnjeuMainController.class);
 
 	@Autowired
-	public EnjeuMainController(PlayerService enjeuMainService) {
+	public EnjeuMainController(PlayerService playerService) {
 		super();
-		this.playerService = enjeuMainService;
+		this.playerService = playerService;
 	}
 	
 	// Mappings
 	@GetMapping("/playerlist")
-	public ModelAndView getWatchlist() {
+	public ModelAndView getPlayerlist() {
 		
 		logger.info("HTTP GET Request received at /playerlist URL");
 		
@@ -75,10 +75,10 @@ public class EnjeuMainController {
 	@PostMapping("/createPlayerForm")
 	public ModelAndView submitWatchlistItemForm(@Valid Player player, BindingResult bindingResult) {
 
-		logger.info("HTTP POST Request received at /watchlistItemForm URL");
+		logger.info("HTTP POST Request received at /createPlayerForm URL");
 		
 		if (bindingResult.hasErrors()) {
-			return new ModelAndView("watchlistItemForm");
+			return new ModelAndView("createPlayerForm");
 		}
 		
 		
@@ -86,14 +86,14 @@ public class EnjeuMainController {
 			playerService.addOrUpdateWatchlistItem(player);
 		} catch (PlayerlistFullException e) {
 			bindingResult.rejectValue(null, "", e.getMessage());
-			return new ModelAndView("watchlistItemForm");
+			return new ModelAndView("createPlayerForm");
 		} catch (DuplicateNameException e) {
 			bindingResult.rejectValue("title", "", e.getMessage());
-			return new ModelAndView("watchlistItemForm");
+			return new ModelAndView("createPlayerForm");
 		}
 		
 		RedirectView redirect = new RedirectView();
-		redirect.setUrl("/watchlist");
+		redirect.setUrl("/playerlist");
 		
 		return new ModelAndView(redirect);
 	}

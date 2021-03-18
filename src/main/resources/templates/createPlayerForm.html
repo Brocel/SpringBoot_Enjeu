@@ -24,7 +24,7 @@
                   <input th:field="*{name}" type = "text" class = "form-control" placeholder = "Mandatory">
                </div>
                <div class="col-sm-4">
-        			<span class="text-danger" th:errors="*{title}"> </span>      
+        			<span class="text-danger" th:errors="*{name}"> </span>      
       			</div>
             </div>
             
@@ -37,6 +37,16 @@
         			<span class="text-danger" th:errors="*{age}"> </span>      
       			</div>
             </div>
+            
+            <div class = "form-group row">
+            	<label for = "country" class = "col-sm-2 col-form-label">Country</label>
+            	<div class = "col-sm-4">
+               		<input th:field="*{country}" type="text" class="form-control"></input>
+               </div>
+               <div class="col-sm-4">
+        			<span class="text-danger" th:errors="*{country}"> </span>      
+      			</div>
+            </div>
                
             <div class = "form-group row ">
                 <label for = "city" class = "col-sm-2 col-form-label mr-0">City</label>
@@ -46,16 +56,6 @@
                 <div class="col-sm-4">
         			<span class="text-danger" th:errors="*{age}"> </span>      
       		    </div>
-            </div>
-               
-            <div class = "form-group row">
-            	<label for = "country" class = "col-sm-2 col-form-label">Country</label>
-            	<div class = "col-sm-4">
-               		<input th:field="*{country}" type="text" class="form-control"></input>
-               </div>
-               <div class="col-sm-4">
-        			<span class="text-danger" th:errors="*{country}"> </span>      
-      			</div>
             </div>
             
             <div class = "form-group row">
