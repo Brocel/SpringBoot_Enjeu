@@ -78,7 +78,7 @@ public class EnjeuDispatcher {
 			bindingResult.rejectValue(null, "", e.getMessage());
 			return new ModelAndView("createPlayerForm");
 		} catch (DuplicateNameException e) {
-			bindingResult.rejectValue("title", "", e.getMessage());
+			bindingResult.rejectValue("name", "", e.getMessage());
 			return new ModelAndView("createPlayerForm");
 		}
 		

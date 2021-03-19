@@ -3,11 +3,12 @@ package com.brocels.springboot.enjeu.repository;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.brocels.springboot.enjeu.domain.Player;
 
-@Service
+@Repository
 public class PlayerRepository {
 
 	private List<Player> players = new ArrayList<Player>();
