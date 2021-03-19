@@ -36,7 +36,7 @@ public class PlayerService {
 		return playerRepository.findById(id);
 	}
 
-	public void addOrUpdateWatchlistItem(Player player) throws DuplicateNameException, PlayerlistFullException {
+	public void addOrUpdatePlayer(Player player) throws DuplicateNameException, PlayerlistFullException {
 		
 		Player existingPlayer = findPlayerById(player.getId());
 		

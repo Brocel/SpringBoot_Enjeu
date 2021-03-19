@@ -1,6 +1,5 @@
-package com.brocels.springboot.enjeu.controller;
+package com.brocels.springboot.enjeu;
 
-import java.util.HashMap;
 import java.util.Map;
 
 import javax.validation.Valid;
@@ -16,22 +15,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.brocels.springboot.enjeu.controller.PlayerCreationController;
+import com.brocels.springboot.enjeu.controller.PlayerlistController;
 import com.brocels.springboot.enjeu.domain.Player;
 import com.brocels.springboot.enjeu.exception.DuplicateNameException;
 import com.brocels.springboot.enjeu.exception.PlayerlistFullException;
-import com.brocels.springboot.enjeu.service.PlayerService;
 
 @Controller
-public class EnjeuMainController {
+public class EnjeuDispatcher {
 
-	private PlayerService playerService;
+	private PlayerlistController playerlistController;
+	private PlayerCreationController playerCreationController;
 	
-	private final Logger logger = LoggerFactory.getLogger(EnjeuMainController.class);
+	private final Logger logger = LoggerFactory.getLogger(EnjeuDispatcher.class);
 
 	@Autowired
-	public EnjeuMainController(PlayerService playerService) {
+	public EnjeuDispatcher(PlayerlistController playerlistController, PlayerCreationController playerCreationController) {
 		super();
-		this.playerService = playerService;
+		this.playerlistController = playerlistController;
+		this.playerCreationController = playerCreationController;
 	}
 	
 	// Mappings
@@ -42,10 +44,7 @@ public class EnjeuMainController {
 		
 		String viewName = "playerlist";
 		
-		Map<String, Object> model = new HashMap<String, Object>();
-		
-		model.put("players", playerService.getPlayers());
-		model.put("numberOfPlayers", playerService.getPlayersSize());
+		Map<String, Object> model = playerlistController.getPlayerlistModel();
 		
 		return new ModelAndView(viewName, model);	
 	}
@@ -57,15 +56,7 @@ public class EnjeuMainController {
 		
 		String viewName = "createPlayerForm";
 		
-		Map<String, Object> model = new HashMap<String, Object>();
-		
-		Player player = playerService.findPlayerById(id);
-		
-		if (player == null) {
-			model.put("player", new Player());
-		} else {
-			model.put("player", player);
-		}
+		Map<String, Object> model = playerCreationController.getPlayerCreationModel(id);
 		
 		return new ModelAndView(viewName, model);
 	}
@@ -73,7 +64,7 @@ public class EnjeuMainController {
 
 	// Post mapping for the create player form
 	@PostMapping("/createPlayerForm")
-	public ModelAndView submitWatchlistItemForm(@Valid Player player, BindingResult bindingResult) {
+	public ModelAndView submitPlayerCreationForm(@Valid Player player, BindingResult bindingResult) {
 
 		logger.info("HTTP POST Request received at /createPlayerForm URL");
 		
@@ -81,9 +72,8 @@ public class EnjeuMainController {
 			return new ModelAndView("createPlayerForm");
 		}
 		
-		
 		try {
-			playerService.addOrUpdateWatchlistItem(player);
+			playerCreationController.postPlayerCreationModel(player);
 		} catch (PlayerlistFullException e) {
 			bindingResult.rejectValue(null, "", e.getMessage());
 			return new ModelAndView("createPlayerForm");
