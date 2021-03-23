@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
+import com.brocels.springboot.enjeu.controller.LoginController;
 import com.brocels.springboot.enjeu.controller.PlayerCreationController;
 import com.brocels.springboot.enjeu.controller.PlayerlistController;
 import com.brocels.springboot.enjeu.domain.Player;
@@ -24,19 +25,34 @@ import com.brocels.springboot.enjeu.exception.PlayerlistFullException;
 @Controller
 public class EnjeuDispatcher {
 
+	private LoginController loginController;
 	private PlayerlistController playerlistController;
 	private PlayerCreationController playerCreationController;
 	
 	private final Logger logger = LoggerFactory.getLogger(EnjeuDispatcher.class);
 
 	@Autowired
-	public EnjeuDispatcher(PlayerlistController playerlistController, PlayerCreationController playerCreationController) {
+	public EnjeuDispatcher(LoginController loginController, PlayerlistController playerlistController, PlayerCreationController playerCreationController) {
 		super();
+		this.loginController = loginController;
 		this.playerlistController = playerlistController;
 		this.playerCreationController = playerCreationController;
 	}
 	
-	// Mappings
+	// Player List
+	@GetMapping("/login")
+	public ModelAndView getLogin() {
+		
+		logger.info("HTTP GET Request received at /login URL");
+		
+		String viewName = "login";
+		
+		Map<String, Object> model = loginController.getLoginModel();
+		
+		return new ModelAndView(viewName, model);
+	}
+	
+	// Player List
 	@GetMapping("/playerlist")
 	public ModelAndView getPlayerlist() {
 		
