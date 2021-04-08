@@ -39,7 +39,7 @@ public class EnjeuDispatcher {
 		this.playerCreationController = playerCreationController;
 	}
 	
-	// Player List
+	// Player Login
 	@GetMapping("/login")
 	public ModelAndView getLogin() {
 		
