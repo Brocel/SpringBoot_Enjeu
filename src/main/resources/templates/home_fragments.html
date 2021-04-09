@@ -29,6 +29,7 @@
 </head>
 <body>
     
+    <!-- NAVBAR -->
     <nav class = "navbar navbar-expand-sm navbar-dark bg-secondary" th:fragment="homeMenu">
     	<a class = "navbar-brand" href = "/">Enjeu</a>
         <button class = "navbar-toggler" type = "button" data-toggle = "collapse" 
@@ -45,13 +46,14 @@
                  <a class = "nav-link" href = "/login">Connect Player</a>
               </li>
               <li class = "nav-item ">
-                 <a class = "nav-link" href = "/createPlayerForm">Create Player</a>
+                 <a class = "nav-link" href = "/home_createPlayerForm">Create Player</a>
               </li>
            </ul>
                
         </div>
     </nav> 
     
+    <!-- FOOTER -->
     <footer th:fragment="homeFooter" style="color: white;">
         <p>&copy; Some home footer to do later</p>
     </footer>
