@@ -30,7 +30,7 @@
 <body>
     
     <nav class = "navbar navbar-expand-sm navbar-dark bg-secondary" th:fragment="homeMenu">
-    	<a class = "navbar-brand" href = "/">Enjeu WebApp</a>
+    	<a class = "navbar-brand" href = "/">Enjeu</a>
         <button class = "navbar-toggler" type = "button" data-toggle = "collapse" 
            data-target = "#navbarSupportedContent" 
            aria-controls = "navbarSupportedContent" aria-expanded = "false" 
@@ -42,16 +42,10 @@
         <div class = "collapse navbar-collapse" id = "navbarSupportedContent">
            <ul class = "navbar-nav mr-auto">
               <li class = "nav-item">
-                 <a class = "nav-link active" href = "/home">Home</a>
-              </li>
-              <li class = "nav-item">
                  <a class = "nav-link" href = "/login">Connect Player</a>
               </li>
               <li class = "nav-item ">
                  <a class = "nav-link" href = "/createPlayerForm">Create Player</a>
-              </li>
-              <li class = "nav-item">
-                 <a class = "nav-link" href = "/playerlist">List of Players</a>
               </li>
            </ul>
                
@@ -60,9 +54,6 @@
     
     <footer th:fragment="homeFooter" style="color: white;">
         <p>&copy; Some home footer to do later</p>
-    </footer>
-    <footer th:fragment="appFooter" style="color: white;">
-        <p>&copy; Some application footer to do later</p>
     </footer>
 </body>
 </html>

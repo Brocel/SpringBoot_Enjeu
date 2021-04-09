@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 
 import com.brocels.springboot.enjeu.domain.Player;
 import com.brocels.springboot.enjeu.exception.DuplicateNameException;
-import com.brocels.springboot.enjeu.exception.PlayerlistFullException;
 import com.brocels.springboot.enjeu.service.PlayerService;
 
 @Controller
@@ -39,7 +38,7 @@ public class PlayerCreationController {
 		return model;
 	}
 	
-	public void postPlayerCreationModel(@Valid Player player) throws DuplicateNameException, PlayerlistFullException {
+	public void postPlayerCreationModel(@Valid Player player) throws DuplicateNameException {
 		
 		playerService.addOrUpdatePlayer(player);
 		

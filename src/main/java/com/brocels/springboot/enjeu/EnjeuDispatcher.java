@@ -20,7 +20,6 @@ import com.brocels.springboot.enjeu.controller.PlayerCreationController;
 import com.brocels.springboot.enjeu.controller.PlayerlistController;
 import com.brocels.springboot.enjeu.domain.Player;
 import com.brocels.springboot.enjeu.exception.DuplicateNameException;
-import com.brocels.springboot.enjeu.exception.PlayerlistFullException;
 
 @Controller
 public class EnjeuDispatcher {
@@ -45,32 +44,20 @@ public class EnjeuDispatcher {
 		
 		logger.info("HTTP GET Request received at /login URL");
 		
-		String viewName = "login";
+		String viewName = "home_login";
 		
 		Map<String, Object> model = loginController.getLoginModel();
 		
 		return new ModelAndView(viewName, model);
 	}
-	
-	// Player List
-	@GetMapping("/playerlist")
-	public ModelAndView getPlayerlist() {
-		
-		logger.info("HTTP GET Request received at /playerlist URL");
-		
-		String viewName = "playerlist";
-		
-		Map<String, Object> model = playerlistController.getPlayerlistModel();
-		
-		return new ModelAndView(viewName, model);	
-	}
+
 	// Adding a web form
-	@GetMapping("/createPlayerForm")
+	@GetMapping("/home_createPlayerForm")
 	public ModelAndView showCreatePlayerForm(@RequestParam(required = false) Integer id) {
 		
 		logger.info("HTTP GET Request received at /createPlayerForm URL");
 		
-		String viewName = "createPlayerForm";
+		String viewName = "home_createPlayerForm";
 		
 		Map<String, Object> model = playerCreationController.getPlayerCreationModel(id);
 		
@@ -79,28 +66,38 @@ public class EnjeuDispatcher {
 	
 
 	// Post mapping for the create player form
-	@PostMapping("/createPlayerForm")
+	@PostMapping("/home_createPlayerForm")
 	public ModelAndView submitPlayerCreationForm(@Valid Player player, BindingResult bindingResult) {
 
 		logger.info("HTTP POST Request received at /createPlayerForm URL");
 		
 		if (bindingResult.hasErrors()) {
-			return new ModelAndView("createPlayerForm");
+			return new ModelAndView("home_createPlayerForm");
 		}
 		
 		try {
 			playerCreationController.postPlayerCreationModel(player);
-		} catch (PlayerlistFullException e) {
-			bindingResult.rejectValue(null, "", e.getMessage());
-			return new ModelAndView("createPlayerForm");
 		} catch (DuplicateNameException e) {
-			bindingResult.rejectValue("name", "", e.getMessage());
-			return new ModelAndView("createPlayerForm");
+			bindingResult.rejectValue("name","", e.getMessage());
+			return new ModelAndView("home_createPlayerForm");
 		}
 		
 		RedirectView redirect = new RedirectView();
-		redirect.setUrl("/playerlist");
+		redirect.setUrl("/home_login");
 		
 		return new ModelAndView(redirect);
+	}
+	
+	// Player List
+	@GetMapping("/enjeu_playerlist")
+	public ModelAndView getPlayerlist() {
+		
+		logger.info("HTTP GET Request received at /playerlist URL");
+		
+		String viewName = "enjeu_playerlist";
+		
+		Map<String, Object> model = playerlistController.getPlayerlistModel();
+		
+		return new ModelAndView(viewName, model);	
 	}
 }

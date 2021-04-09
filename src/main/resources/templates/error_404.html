@@ -1,21 +1,14 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-<!-- Meta tags -->
-<meta charset="utf-8">
-<meta name="viewport" content="width = device-width, initial-scale = 1, shrink-to-fit = no">
+<head th:replace="error_fragments :: baseHead(~{::title}, ~{::link})">
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-<!-- Custom CSS -->
-<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
-
-<title>Enjeu WebApp</title>
+	<title>Error 404 !</title>
+	
 </head>
 
 <body>
 	<div class="container">
  		
- 		<div th:replace="fragments :: homeMenu"></div>
+ 		<div th:replace="error_fragments :: errorMenu"></div>
  		<br>
       	<br>
       	
@@ -29,7 +22,7 @@
 		
 	</div>
 
-	<div th:replace="fragments :: appFooter"></div>
+	<div th:replace="error_fragments :: errorFooter"></div>
 
 </body>
 </html>

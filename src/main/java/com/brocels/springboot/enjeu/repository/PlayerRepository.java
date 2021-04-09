@@ -12,13 +12,7 @@ import com.brocels.springboot.enjeu.domain.Player;
 public class PlayerRepository {
 
 	private List<Player> players = new ArrayList<Player>();
-	private static int maximumPlayers = 10;
 	private static int index = 1; 
-	
-	
-	public static int getMaximumPlayers() {
-		return maximumPlayers;
-	}
 
 	public List<Player> getList() {
 		return players;

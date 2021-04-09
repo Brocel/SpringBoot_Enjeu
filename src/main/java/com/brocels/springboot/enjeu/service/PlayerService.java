@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.brocels.springboot.enjeu.domain.Player;
 import com.brocels.springboot.enjeu.exception.DuplicateNameException;
-import com.brocels.springboot.enjeu.exception.PlayerlistFullException;
 import com.brocels.springboot.enjeu.repository.PlayerRepository;
 
 @Service
@@ -36,15 +35,12 @@ public class PlayerService {
 		return playerRepository.findById(id);
 	}
 
-	public void addOrUpdatePlayer(Player player) throws DuplicateNameException, PlayerlistFullException {
+	public void addOrUpdatePlayer(Player player) throws DuplicateNameException {
 		
 		Player existingPlayer = findPlayerById(player.getId());
 		
 		if(existingPlayer == null) {
 			
-			if (getPlayersSize() >= playerRepository.getMaximumPlayers()) {
-				throw new PlayerlistFullException();
-			}
 			if (playerRepository.findByName(player.getName()) != null) {
 				throw new DuplicateNameException();
 			}

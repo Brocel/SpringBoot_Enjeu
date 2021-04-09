@@ -1,5 +1,5 @@
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments :: baseHead(~{::title}, ~{::link})">
+<head th:replace="home_fragments :: baseHead(~{::title}, ~{::link})">
 
 	<title>Enjeu Player Creation</title>
 	
@@ -7,7 +7,7 @@
 <body>
 	<div class="container">
  		
- 		<div th:replace="fragments :: homeMenu"></div>
+ 		<div th:replace="home_fragments :: homeMenu"></div>
  		<br>
         <form action="#" method="post" th:action="@{/createPlayerForm}" th:object="${player}">
             <h2 class = "mt-4">Create a player</h2>
@@ -88,6 +88,6 @@
          </form>
       </div>
       
-      <div th:replace="fragments :: homeFooter"></div> 
+      <div th:replace="home_fragments :: homeFooter"></div> 
 </body>
 </html>
