@@ -37,7 +37,19 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
-		http.authorizeRequests().anyRequest().authenticated().and().formLogin();
+		http
+		.authorizeRequests()
+			.antMatchers("/", "/home","/home_createPlayerForm").permitAll()
+			.antMatchers("/css/**", "/**").permitAll()
+			.anyRequest().authenticated()
+			.and()
+		.formLogin()
+			.loginPage("/login")
+			.usernameParameter("name")
+			.permitAll()
+			.and()
+		.logout()
+			.permitAll();
 	}
 	
 	@Override
