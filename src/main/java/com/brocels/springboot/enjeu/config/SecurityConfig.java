@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.and()
 		.formLogin()
 			.loginPage("/login")
-			.usernameParameter("name")
+			.loginProcessingUrl("/enjeu_home")
 			.permitAll()
 			.and()
 		.logout()
@@ -56,6 +56,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 		
 		auth.inMemoryAuthentication().withUser("user")
-			.password(passwordEncoder().encode("pwd")).authorities("USER");
+			.password(passwordEncoder().encode("password")).authorities("USER");
 	}
 }

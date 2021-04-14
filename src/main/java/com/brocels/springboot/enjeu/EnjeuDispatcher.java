@@ -50,6 +50,9 @@ public class EnjeuDispatcher {
 		
 		return new ModelAndView(viewName, model);
 	}
+	
+//	@PostMapping("/login")
+//	public ModelAndView submitLoginForm()
 
 	// Adding a web form
 	@GetMapping("/home_createPlayerForm")
