@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.view.RedirectView;
 
-import com.brocels.springboot.enjeu.controller.LoginController;
 import com.brocels.springboot.enjeu.controller.PlayerCreationController;
 import com.brocels.springboot.enjeu.controller.PlayerlistController;
 import com.brocels.springboot.enjeu.domain.Player;
@@ -24,35 +23,17 @@ import com.brocels.springboot.enjeu.exception.DuplicateNameException;
 @Controller
 public class EnjeuDispatcher {
 
-	private LoginController loginController;
 	private PlayerlistController playerlistController;
 	private PlayerCreationController playerCreationController;
 	
 	private final Logger logger = LoggerFactory.getLogger(EnjeuDispatcher.class);
 
 	@Autowired
-	public EnjeuDispatcher(LoginController loginController, PlayerlistController playerlistController, PlayerCreationController playerCreationController) {
+	public EnjeuDispatcher(PlayerlistController playerlistController, PlayerCreationController playerCreationController) {
 		super();
-		this.loginController = loginController;
 		this.playerlistController = playerlistController;
 		this.playerCreationController = playerCreationController;
 	}
-	
-	// Player Login
-	@GetMapping("/login")
-	public ModelAndView getLogin() {
-		
-		logger.info("HTTP GET Request received at /login URL");
-		
-		String viewName = "home_login";
-		
-		Map<String, Object> model = loginController.getLoginModel();
-		
-		return new ModelAndView(viewName, model);
-	}
-	
-//	@PostMapping("/login")
-//	public ModelAndView submitLoginForm()
 
 	// Adding a web form
 	@GetMapping("/home_createPlayerForm")
