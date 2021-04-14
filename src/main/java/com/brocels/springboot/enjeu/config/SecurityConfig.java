@@ -23,7 +23,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 		http
 		.authorizeRequests()
 			.antMatchers("/", "/home","/home_createPlayerForm").permitAll()
+			.antMatchers("/enjeu_home", "/enjeu_player", "/enjeu_playerlist").access("hasAnyAuthority('USERS','ADMIN')")
 			.antMatchers("/css/**", "/**").permitAll()
+			// CODER LES ROLES
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
