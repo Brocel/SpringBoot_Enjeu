@@ -12,23 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter{
 
-//	@Override
-//	protected void configure(HttpSecurity http) throws Exception {
-//		http
-//			.authorizeRequests()
-//				.antMatchers("/", "/home").permitAll()
-//				.antMatchers("/css/**", "/**").permitAll()
-//				.anyRequest().authenticated()
-//				.and()
-//			.formLogin()
-//				.loginPage("/login")
-//				.usernameParameter("name")
-//				.permitAll()
-//				.and()
-//			.logout()
-//				.permitAll();
-//	}
-
 	@Bean
 	public static BCryptPasswordEncoder passwordEncoder() {
 		return new BCryptPasswordEncoder();
@@ -44,7 +27,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 			.anyRequest().authenticated()
 			.and()
 		.formLogin()
-			.loginPage("/login").successForwardUrl("/enjeu_home")
+			.loginPage("/login")
+            .loginProcessingUrl("/login")
+            .defaultSuccessUrl("/enjeu_home", true)
 			.permitAll()
 			.and()
 		.logout()
