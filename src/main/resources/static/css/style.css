@@ -10,7 +10,7 @@ body {
 }
 
 form {
-	background-image: url('../image/bg_V_board.jpg');
+	background-image: url('../image/bg_parchemin.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: 100% 100%;
@@ -22,13 +22,12 @@ form {
 
 .homeTitle {
 	display: table;
-	background-image: url('../image/bg_H_board.jpg');
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: 100% 100%;
+/* 	background-image: url('../image/bg_H_board.jpg'); */
+/* 	background-repeat: no-repeat; */
+/* 	background-position: center; */
+/* 	background-size: 100% 100%; */
 	color: white;
 	width: 100%;
-	height: auto;
 	text-align: center;
 	padding: 5%;
 }
@@ -44,14 +43,14 @@ form {
 	grid-gap: 1%;
 	border: 4px solid;
 	border-color: rgba(202, 111, 30, 1);
-	grid-template-columns: 1fr repeat(2,4fr) 1fr;
-	grid-template-rows: 0,5fr auto repeat(3,2fr) 1fr;
+	grid-template-columns: 1fr repeat(2,5fr) 1fr;
+	grid-template-rows: 0,5fr 0,5fr repeat(3,2fr) 1fr;
 	grid-template-areas:
 	"nav nav nav nav"
 	"left_title title title right_title"
-	"left_bar center_cont center_cont right_bar"
-	"left_bar center_cont center_cont right_bar"
-	"left_bar center_cont center_cont right_bar"
+	"left_bar l_center_cont r_center_cont right_bar"
+	"left_bar l_center_cont r_center_cont right_bar"
+	"left_bar l_center_cont r_center_cont right_bar"
 	"foot foot foot foot";
 }
 
@@ -75,8 +74,14 @@ form {
     justify-content: center;
 }
 
-.gridCenter {
-	grid-area: center_cont;
+.gridCenterLeft {
+	grid-area: l_center_cont;
+    justify-content: center;
+    text-align: center;
+}
+
+.gridCenterRight {
+	grid-area: r_center_cont;
     justify-content: center;
     text-align: center;
 }

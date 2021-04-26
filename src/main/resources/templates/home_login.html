@@ -15,15 +15,18 @@
 			<h5 >In order to log in, use your username and your password</h5>
 		</div>
 		
-		<div th:if="${param.error}">
+		<div class="gridCenterRight">
+			<div th:if="${param.error}">
 			UserName or Password invalid !
+			</div>
+		
+			<div th:if="${param.logout}">
+				You are disconnected !
+			</div>
 		</div>
 		
-		<div th:if="${param.logout}">
-			You are disconnected !
-		</div>
 		
-		<form class="gridCenter" th:action="@{/login}" method="post">
+		<form class="gridCenterLeft" th:action="@{/login}" method="post">
 			<div>
 				<label>User Name : <input type="text" name="username"/> </label>
 			</div>

@@ -1,15 +1,15 @@
 <html xmlns:th="http://www.thymeleaf.org" >
-<head th:replace="fragments :: baseHead(~{::title}, ~{::link})">
+<head th:replace="enjeu_fragments :: baseHead(~{::title}, ~{::link})">
 
 <title>Players List</title>
 
 </head>
 <body>
 	<div class="container">
-		<div th:replace="fragments :: enjeuMenu"></div>
+		<div th:replace="enjeu_fragments :: enjeuMenu"></div>
 	 	
-		<h2  class = "grid Title mt-4">Playerlist</h2>
-		<table class="gridCenter table">
+		<h2  class = "gridTitle mt-4">Playerlist</h2>
+		<table class="gridCenterLeft table">
 			<thead class = "thead-light">
 		        <tr>
 		            <th class="text-left">Name</th>
@@ -32,10 +32,10 @@
 		</table>
 		
 		
-		<div class="gridRight">Number of players created: <span th:text="${numberOfPlayers}"></span> </div>	 
+		<div class="gridCenterRight">Number of players created: <span th:text="${numberOfPlayers}"></span> </div>	 
 		
 	</div>
-	<div th:replace="fragments :: homeFooter"></div>
+	<div th:replace="enjeu_fragments :: enjeuFooter"></div>
 	
 </body>
 </html>

@@ -9,9 +9,11 @@
  		
  		<div th:replace="home_fragments :: homeMenu"></div>
  		
-        <form class="gridCenter" action="#" method="post" th:action="@{/createPlayerForm}" th:object="${player}">
-            <h2 class = "mt-4">Create a player</h2>
-            <hr/>
+ 		<div class="gridTitle homeTitle">
+ 			<h2 class = "mt-4">Create a player</h2>
+ 		</div>
+ 		
+        <form class="gridCenterLeft" action="#" method="post" th:action="@{/createPlayerForm}" th:object="${player}">
             <!-- Form levels error messages here -->
             <div class = "form-group row ">
                <div class="col-sm-8">
@@ -20,60 +22,60 @@
             </div>
             <div class = "form-group row ">
                <label for = "name" class = "col-sm-2 col-form-label">Name</label>
-               <div class = "col-sm-4">
+               <div class = "col-sm-8">
                   <input th:field="*{name}" type = "text" class = "form-control" placeholder = "Mandatory">
                </div>
-               <div class="col-sm-4">
+               <div class="col-sm-8">
         			<span class="text-danger" th:errors="*{name}"> </span>      
       			</div>
             </div>
             
             <div class = "form-group row ">
                <label for = "age" class = "col-sm-2 col-form-label mr-0">Age</label>
-               <div class = "col-sm-4">
+               <div class = "col-sm-8">
                   <input th:field="*{age}" type = "text" class = "form-control" placeholder = "0 < Number < 100">
                </div>
-               <div class="col-sm-4">
+               <div class="col-sm-8">
         			<span class="text-danger" th:errors="*{age}"> </span>      
       			</div>
             </div>
             
             <div class = "form-group row">
             	<label for = "country" class = "col-sm-2 col-form-label">Country</label>
-            	<div class = "col-sm-4">
+            	<div class = "col-sm-8">
                		<input th:field="*{country}" type="text" class="form-control"></input>
                </div>
-               <div class="col-sm-4">
+               <div class="col-sm-8">
         			<span class="text-danger" th:errors="*{country}"> </span>      
       			</div>
             </div>
                
             <div class = "form-group row ">
                 <label for = "city" class = "col-sm-2 col-form-label mr-0">City</label>
-            	<div class = "col-sm-4">
+            	<div class = "col-sm-8">
                   <input th:field="*{city}" type = "text" class = "form-control">
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-8">
         			<span class="text-danger" th:errors="*{age}"> </span>      
       		    </div>
             </div>
             
             <div class = "form-group row">
             	<label for = "avatarUrl" class = "col-sm-2 col-form-label">Avatar</label>
-            	<div class = "col-sm-4">
+            	<div class = "col-sm-8">
                		<input th:field="*{avatarUrl}" type="text" class="form-control"></input>
                </div>
-               <div class="col-sm-4">
+               <div class="col-sm-8">
         			<span class="text-danger" th:errors="*{avatarUrl}"> </span>      
       			</div>
             </div>
             
             <div class = "form-group row">
             	<label for = "eMail" class = "col-sm-2 col-form-label">E-Mail</label>
-            	<div class = "col-sm-4">
+            	<div class = "col-sm-8">
                		<input th:field="*{eMail}" type="text" class="form-control"></input>
                </div>
-               <div class="col-sm-4">
+               <div class="col-sm-8">
         			<span class="text-danger" th:errors="*{eMail}"> </span>      
       			</div>
             </div>
