@@ -7,9 +7,9 @@
 <body>
 	<div class="container">
 		<div th:replace="fragments :: enjeuMenu"></div>
-	 	<br>
-		<h2  class = "mt-4">Playerlist</h2>
-		<table class="table">
+	 	
+		<h2  class = "grid Title mt-4">Playerlist</h2>
+		<table class="gridCenter table">
 			<thead class = "thead-light">
 		        <tr>
 		            <th class="text-left">Name</th>
@@ -30,10 +30,10 @@
 				</tr> 
 			</tbody>
 		</table>
-		<hr/>
-		<div >
-			<div>Number of players created: <span th:text="${numberOfPlayers}"></span> </div>	 
-		</div>
+		
+		
+		<div class="gridRight">Number of players created: <span th:text="${numberOfPlayers}"></span> </div>	 
+		
 	</div>
 	<div th:replace="fragments :: homeFooter"></div>
 	

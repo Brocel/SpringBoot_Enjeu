@@ -9,8 +9,8 @@
 	<div class="container">
  		
  		<div th:replace="home_fragments :: homeMenu"></div>
- 		<br>
- 		<div class="homeTitle">
+ 		
+ 		<div class="gridTitle homeTitle">
 			<h2 >Please Log In the game</h2> <br>
 			<h5 >In order to log in, use your username and your password</h5>
 		</div>
@@ -23,7 +23,7 @@
 			You are disconnected !
 		</div>
 		
-		<form th:action="@{/login}" method="post">
+		<form class="gridCenter" th:action="@{/login}" method="post">
 			<div>
 				<label>User Name : <input type="text" name="username"/> </label>
 			</div>

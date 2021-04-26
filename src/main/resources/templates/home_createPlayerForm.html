@@ -8,8 +8,8 @@
 	<div class="container">
  		
  		<div th:replace="home_fragments :: homeMenu"></div>
- 		<br>
-        <form action="#" method="post" th:action="@{/createPlayerForm}" th:object="${player}">
+ 		
+        <form class="gridCenter" action="#" method="post" th:action="@{/createPlayerForm}" th:object="${player}">
             <h2 class = "mt-4">Create a player</h2>
             <hr/>
             <!-- Form levels error messages here -->
