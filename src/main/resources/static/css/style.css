@@ -28,6 +28,7 @@ form {
 	background-size: 100% 100%;
 	color: white;
 	width: 100%;
+	height: auto;
 	text-align: center;
 	padding: 5%;
 }
@@ -44,12 +45,43 @@ form {
 	border: 4px solid;
 	border-color: rgba(202, 111, 30, 1);
 	grid-template-columns: 1fr repeat(2,4fr) 1fr;
-	grid-template-rows: 0,5fr 1fr repeat(3,2fr) 1fr;
+	grid-template-rows: 0,5fr auto repeat(3,2fr) 1fr;
 	grid-template-areas:
 	"nav nav nav nav"
-	"title title title title"
+	"left_title title title right_title"
 	"left_bar center_cont center_cont right_bar"
 	"left_bar center_cont center_cont right_bar"
 	"left_bar center_cont center_cont right_bar"
 	"foot foot foot foot";
+}
+
+.gridNavBar {
+	grid-area: nav;
+    justify-content: center;
+}
+
+.gridTitle {
+	grid-area: title;
+    justify-content: center;
+}
+
+.gridLeft {
+	grid-area: left_bar;
+    justify-content: center;
+}
+
+.gridRight {
+	grid-area: right_bar;
+    justify-content: center;
+}
+
+.gridCenter {
+	grid-area: center_cont;
+    justify-content: center;
+    text-align: center;
+}
+
+.gridFoot {
+	grid-area: foot;
+    justify-content: center;
 }
